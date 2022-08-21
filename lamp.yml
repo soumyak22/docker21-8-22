@@ -1,0 +1,18 @@
+---
+version: '3.8'
+services:
+ mydb:
+  image: mysql
+  environment:
+   MYSQL_ROOT_PASSWORD: dillip
+ apache:
+  image: 
+  ports:
+   - 8989:80
+  links:
+   - mydb:httpd
+ php: 
+  image: php:7.2-apache
+  links:
+   - mydb:mysql
+   - apache:mysql
