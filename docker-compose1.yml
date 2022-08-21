@@ -1,0 +1,19 @@
+---
+- version: '3.2'
+  services:
+   myjenkins:
+    image: jenkins/jenkins
+    ports:
+     - 8989:8080
+   qaserver:
+    image: tomcat
+    ports:
+    - 8888:8080
+    links:
+     - myjenkins:jenkins
+   prod server:
+    image: tomcat
+    ports:
+     - 7070:8080
+    links:
+     - myjenkins:jenkins
